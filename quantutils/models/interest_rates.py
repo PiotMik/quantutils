@@ -40,7 +40,7 @@ def vasicek(a: float, b: float, sigma: float, x0: float,
     """
     Generate an interest rate trajectory from merton model, using Euler-Maruyama scheme.
     Model:
-        dX(t) = [a-b*X(t)]*dt + sigma*dWt
+        dX(t) = b*[a-X(t)]*dt + sigma*dWt
     Parameters
     ----------
     a: float,
@@ -60,7 +60,7 @@ def vasicek(a: float, b: float, sigma: float, x0: float,
     """
 
     return euler_maruyama(x0,
-                          a_t=lambda t, x: a - b*x,
+                          a_t=lambda t, x: b*(a - x),
                           b_t=lambda t, x: sigma,
                           n_steps=n_steps,
                           dt=dt,
