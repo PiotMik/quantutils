@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use('ggplot')
 
 
 def gbm(s0: float, r: float, sigma: float, t: float, time_steps: int, n_paths: int):
