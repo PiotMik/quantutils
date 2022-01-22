@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
    name='quantutils',
-   version='1.0',
+   version='0.1.0',
    description='Quantitative Finance utilities',
    author='Piotr Mikler',
    author_email='piotr.mikler1997@gmail.com',
