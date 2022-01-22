@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/quantutils.iml" filepath="$PROJECT_DIR$/.idea/quantutils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../temp_scripts/.idea/temp_scripts.iml" filepath="$PROJECT_DIR$/../temp_scripts/.idea/temp_scripts.iml" />
     </modules>
   </component>
 </project>
