@@ -1,2 +1,2 @@
-import models
-import simulations
+from .models import *
+from .simulations import *
