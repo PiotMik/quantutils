@@ -41,6 +41,27 @@ def euler_maruyama(x0: float, a_t: Callable, b_t: Callable, n_steps: int, dt: fl
             t.append(t_k)
         return np.array(t), np.array(xt)
 
+def milstein(x0: float, a_t: Callable, b_t: Callable,
+             n_steps: int, n_paths: int, dt: float,
+             bx_t: Optional[Callable] = None,
+             rnorm: Optional = None):
+
+    if bx_t is None:
+        bx_t = lambda t, x: (b_t(t, x + dt) - b_t(t, x))/dt
+
+    if rnorm is None:
+        rnorm = np.random.normal(size=(n_steps - 1, n_paths))
+
+    t = np.zeros(shape=(n_steps,))
+    St = np.zeros(shape=(n_steps, n_paths))
+    St[0, :] = x0
+
+    for i, Z in enumerate(rnorm):
+        St[i + 1,] = St[i,] + a_t(t[i], St[i,]) * dt + b_t(t[i], St[i,]) * Z * np.sqrt(dt) + \
+                     bx_t(t[i], St[i,]) * b_t(t[i], St[i,]) * 0.5 * ((Z * np.sqrt(dt)) ** 2 - dt)
+        t[i + 1] = t[i] + dt
+
+    return t, St
 
 if __name__ == "__main__":
     pass
